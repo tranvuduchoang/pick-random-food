@@ -5,6 +5,8 @@ import { createServer } from "./server";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  // Set base path for GitHub Pages deployment
+  base: mode === 'production' ? '/pick-random-food/' : '/',
   server: {
     host: "::",
     port: 8080,
