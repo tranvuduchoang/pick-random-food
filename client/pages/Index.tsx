@@ -99,7 +99,7 @@ export default function Index() {
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Column - Wheel and Form */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className="lg:col-span-2 space-y-8 order-1">
             {/* Category Title */}
             <div className="text-center">
               <h2 className="text-2xl md:text-3xl font-bold text-foreground">
@@ -117,18 +117,10 @@ export default function Index() {
                 onSpinEnd={() => setIsSpinning(false)}
               />
             </div>
-
-            {/* Dish List */}
-            <div className="bg-card rounded-lg border border-border p-6 shadow-lg">
-              <DishList
-                dishes={selectedCategory.dishes}
-                title="Danh sách các món trong mục này"
-              />
-            </div>
           </div>
 
-          {/* Right Column - Add Form and Prizes */}
-          <div className="space-y-6">
+          {/* Right Column - Add Form and Prizes (appears after wheel on mobile, but before dish list) */}
+          <div className="space-y-6 order-2 lg:order-3">
             {/* Add Dish Form */}
             <AddDishForm
               onAddDish={handleAddDish}
@@ -138,6 +130,16 @@ export default function Index() {
 
             {/* Prize Table */}
             <PrizeTable prizes={prizes} onClearPrizes={handleClearPrizes} />
+          </div>
+
+          {/* Dish List - appears last on mobile */}
+          <div className="lg:col-span-2 order-3 lg:order-2">
+            <div className="bg-card rounded-lg border border-border p-6 shadow-lg">
+              <DishList
+                dishes={selectedCategory.dishes}
+                title="Danh sách các món trong mục này"
+              />
+            </div>
           </div>
         </div>
       </div>
