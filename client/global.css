@@ -1,0 +1,161 @@
+/** @import must precede all other statements */
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /**
+   * Tailwind CSS theme - Vietnamese Restaurant Theme
+   * tailwind.config.ts expects the following color variables to be expressed as HSL values.
+   * A different format will require also updating the theme in tailwind.config.ts.
+  */
+  :root {
+    --background: 45 100% 97%;
+    --foreground: 25 60% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 25 60% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 25 60% 15%;
+
+    --primary: 25 95% 48%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 120 70% 45%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 45 20% 75%;
+    --muted-foreground: 25 15% 45%;
+
+    --accent: 35 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 45 30% 90%;
+    --input: 45 20% 93%;
+    --ring: 25 95% 48%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 25 60% 15%;
+    --sidebar-primary: 25 95% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 120 70% 45%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 45 30% 90%;
+    --sidebar-ring: 25 95% 48%;
+  }
+
+  .dark {
+    --background: 25 30% 15%;
+    --foreground: 45 100% 95%;
+
+    --card: 25 25% 20%;
+    --card-foreground: 45 100% 95%;
+
+    --popover: 25 25% 20%;
+    --popover-foreground: 45 100% 95%;
+
+    --primary: 25 95% 60%;
+    --primary-foreground: 25 60% 15%;
+
+    --secondary: 120 70% 55%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 25 20% 40%;
+    --muted-foreground: 45 30% 70%;
+
+    --accent: 35 100% 55%;
+    --accent-foreground: 25 60% 15%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 25 20% 30%;
+    --input: 25 20% 28%;
+    --ring: 25 95% 60%;
+
+    --sidebar-background: 25 30% 12%;
+    --sidebar-foreground: 45 100% 95%;
+    --sidebar-primary: 25 95% 60%;
+    --sidebar-primary-foreground: 25 60% 15%;
+    --sidebar-accent: 120 70% 55%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 25 20% 30%;
+    --sidebar-ring: 25 95% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    font-family: "Plus Jakarta Sans", sans-serif;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  :where(p, span, li, h1, h2, h3, h4, h5, h6, a, button, label, td, th) {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  pre,
+  code {
+    overflow-x: auto;
+    white-space: pre;
+  }
+}
+
+@layer components {
+  .wheel-container {
+    @apply relative w-full max-w-md mx-auto aspect-square;
+  }
+
+  .wheel-svg {
+    @apply w-full h-full filter drop-shadow-lg;
+  }
+
+  .wheel-segment {
+    @apply cursor-pointer transition-opacity duration-200 hover:opacity-90;
+  }
+
+  .wheel-pointer {
+    @apply absolute top-0 left-1/2 -translate-x-1/2 w-6 h-8 z-10;
+  }
+
+  .spin-button {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full shadow-lg font-bold text-lg transition-all duration-200 hover:scale-110 active:scale-95;
+  }
+
+  .prize-highlight {
+    animation: pulse-glow 0.6s ease-in-out 3;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      filter: drop-shadow(0 0 0 rgba(255, 165, 0, 0));
+    }
+    50% {
+      filter: drop-shadow(0 0 12px rgba(255, 165, 0, 0.8));
+    }
+  }
+
+  .tab-active {
+    @apply border-b-2 border-primary font-semibold text-primary;
+  }
+
+  .tab-inactive {
+    @apply border-b-2 border-transparent text-foreground/70 hover:text-foreground;
+  }
+}
